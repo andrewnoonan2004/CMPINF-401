@@ -15,7 +15,10 @@ public class Deck
 			System.out.format("\nINVALID DECK SIZE: (" + numCards + "). Must be an small even number <= %d\n", MAX_DECK_SIZE);
 			System.exit(0);
 		}
-		// YOU DO THIS => init deck to be exactly numCards long
+		arr[] = new int[ numCards ];
+		for( int i=0; i<arr.length; i++ )
+			arr[i] = i;
+			 // YOU DO THIS => init deck to be exactly numCards long
 		// YOU DO THIS => fill deck with with 0 1 2 3 ... numCards-1 in order
 	}
 	

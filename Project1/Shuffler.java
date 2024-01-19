@@ -17,6 +17,7 @@ public class Shuffler
 			System.exit(0);
 		}
 		Deck deck = new Deck( Integer.parseInt( args[0] ) ); // starts out in sorted order 1 2 3 4 5 . . .
+		System.out.print( deck );
 		int numShuffles=0;
 		System.out.println("IN-SHUFFLING:");
 		System.out.format( "%2d shuffles: %s\n", numShuffles, deck );
