@@ -34,9 +34,24 @@ public class Deck
 	// MODIFIES THE MEMBER ARRAY DECK
 	public void inShuffle()
 	{
-		// YOUR CODE HERE DELETE LINE
+		// 1. (tried to shuffle the deck in place)
+		//	very difficult, don't do.
+		// 2. make a second array, copy the values into it.
+		// copy that reordered sequence back into the original array
+		// 3. Make a second array, copy the values into the second array,
+		// copy the ref/addr from the second array into the original ref var
+		// Example:
+		int newDeck[] = new int[deck.length] // making a second array
+		int t=0, m=newDeck.length/2, c=0; // defining variables to help us shuffle
+		while (c<newDeck.length)// while loop to copy contents
+		{
+			deck[m] = newDeck[c++]//append deck[m] onto the newDeck[c++]
+			deck[t] = newDeck[c++]//append deck[t] onto newDeck[c++]
+			t++; //incrementing t
+			m++; //incrementing m
+		}
+	deck = newDeck;//copy the reference variable to newDeck
 	}
-
 	// ONLY WORKS ON DECK WITH EVEN NUMBER OF CARDS
 	// MODIFIES THE MEMBER ARRAY DECK
 	public void outShuffle()
