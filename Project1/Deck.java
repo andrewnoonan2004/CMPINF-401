@@ -15,9 +15,9 @@ public class Deck
 			System.out.format("\nINVALID DECK SIZE: (" + numCards + "). Must be an small even number <= %d\n", MAX_DECK_SIZE);
 			System.exit(0);
 		}
-		arr[] = new int[ numCards ];
-		for( int i=0; i<arr.length; i++ )
-			arr[i] = i;
+		deck = new int[ numCards ];
+		for( int i=0; i<deck.length; i++ )
+			deck[i] = i;
 			 // YOU DO THIS => init deck to be exactly numCards long
 		// YOU DO THIS => fill deck with with 0 1 2 3 ... numCards-1 in order
 	}
@@ -41,28 +41,38 @@ public class Deck
 		// 3. Make a second array, copy the values into the second array,
 		// copy the ref/addr from the second array into the original ref var
 		// Example:
-		int newDeck[] = new int[deck.length] // making a second array
+		int newDeck[] = new int[deck.length]; // making a second array
 		int t=0, m=newDeck.length/2, c=0; // defining variables to help us shuffle
 		while (c<newDeck.length)// while loop to copy contents
 		{
-			deck[m] = newDeck[c++]//append deck[m] onto the newDeck[c++]
-			deck[t] = newDeck[c++]//append deck[t] onto newDeck[c++]
-			t++; //incrementing t
-			m++; //incrementing m
+			newDeck[c++] = deck[m++]; // append deck[m] onto the newDeck[c++]
+			newDeck[c++] = deck[t++]; // append deck[t] onto newDeck[c++]
 		}
-	deck = newDeck;//copy the reference variable to newDeck
+		deck = newDeck;//copy the reference variable to newDeck
 	}
 	// ONLY WORKS ON DECK WITH EVEN NUMBER OF CARDS
 	// MODIFIES THE MEMBER ARRAY DECK
 	public void outShuffle()
 	{
-		// YOUR CODE HERE DELETE LINE	
+		int newDeck[] = new int[deck.length]; // making a second array
+		int t=0, m=newDeck.length/2, c=0; // defining variables to help us shuffle
+		while (c<newDeck.length)// while loop to copy contents
+		{
+			newDeck[c++] = deck[t++]; // append deck[m] onto the newDeck[c++]
+			newDeck[c++] = deck[m++]; // append deck[t] onto newDeck[c++]
+		}
+	deck = newDeck;
 	}
-	
 	// RETURNS TRUE IF DECK IN ORIGINAL SORTED:  0 1 2 3 ...
 	public boolean inSortedOrder()
 	{
-		// YOUR CODE HERE DELETE LINE
-		return true; // JUST HERE TO COMPILE
+		for(int i=0; i<deck.length;i++)
+		{
+			if(deck[i] == i)
+			i++;
+			if(deck[i] != i)
+			return false;
+		}
+	return true;
 	}
 }	// END DECK CLASS
