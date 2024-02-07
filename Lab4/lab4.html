@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>lab4.html</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"  /><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><style> body { box-sizing: border-box; max-width: 740px; width: 100%; margin: 40px auto; padding: 0 10px; } </style><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script><script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script><script>document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('markdown-body'); document.querySelectorAll('pre[lang] > code').forEach((code) => { code.classList.add(code.parentElement.lang); }); document.querySelectorAll('pre > code').forEach((code) => { hljs.highlightBlock(code); }); });</script>
+</head>
+
+<body>
+
+marked(): highlight and langPrefix parameters are deprecated since version 5.0.0, should not be used and will be removed in the future. Instead use https://www.npmjs.com/package/marked-highlight.
+marked(): mangle parameter is deprecated since version 5.0.0, should not be used and will be removed in the future. Instead use https://www.npmjs.com/package/marked-mangle.
+marked(): headerIds and headerPrefix parameters are deprecated since version 5.0.0, should not be used and will be removed in the future. Instead use https://www.npmjs.com/package/marked-gfm-heading-id.
+<h1 id="introduction-to-object-oriented-programming">Introduction to Object Oriented Programming</h1>
+<p>Object-Oriented Programming (OOP) is the use of objects to combine variables and methods in a single unit of abstraction. More concretely, OOP is the writing and use of classes. A class in Java is simply a definition of a data type where that description weds variables and methods which in turn manipulate those variables. We begin with a simple example. </p>
+<h2 id="how-do-we-represent-a-fraction-in-our-program">How do we represent a Fraction in our program?</h2>
+<ol>
+<li>We want to store a numerator and denominator for our fraction and perform operations such as addition, subtraction, multiplication etcetera on different variables of our Fraction data type.</li>
+</ol>
+<h2 id="two-possibilities">Two possibilities:</h2>
+<ol>
+<li>declare 2 ints named numer and denom, then pass them around to various methods from main</li>
+<li>declare an array of 2 ints and just remember that arr[0] is numerator and arr[1] is denominator
+The second is actually a little better than the first. At least it achieves bundling together the numerator and the denominator into a single object. It is still very poor however.</li>
+</ol>
+<h2 id="a-better-solution">A better solution:</h2>
+<pre><code class="language-java">/* Fraction.java A class(data type) definition file
+This file just defines what a Fraction is
+This file is NOT a program
+*/
+public class Fraction
+{
+
+    public inr numer;
+    public int denom;
+}
+</code></pre>
+<p>Now that we have that fraction class definition file, we can then do the following:</p>
+<pre><code class="language-java">public class FractionTester
+{
+    public static void main( String args[] )
+    {
+        // use the word Fraction as if were a Java data type
+        Fraction f1 = new Fraction();  // create an object of the fraction type
+
+        f1.numer = 22; // use dot operator to access numer or denom
+        f1.denom=7;
+        System.out.println(&quot;f1=&quot; + f1.numer + &quot;/&quot; + f1.denom); // outputs: &quot;f1=22/7&quot;
+    } // END main
+} // EOF
+</code></pre>
+<h2 id="object-oriented-programming-terms">Object oriented programming terms</h2>
+<h3 id="class">class</h3>
+<ol>
+<li>a.k.a data type, our new class is named the Fraction class</li>
+<li>class definition file - the source code file named &quot;Fraction.java&quot; contains the definition of what a Fraction is</li>
+</ol>
+<h3 id="object">Object</h3>
+<ol>
+<li>the chunk of memory allocated by a statement like: Fraction f1=new Fraction();</li>
+<li>The object is where the actual data is stored in memory</li>
+</ol>
+<h3 id="reference-variable">reference variable</h3>
+<ol>
+<li>in our case, f1 is the reference by which we access the object</li>
+</ol>
+<h3 id="members">Members</h3>
+<ol>
+<li>our Fraction class has two members; numer and denom.</li>
+</ol>
+
+
+</body>
+</html>
