@@ -58,8 +58,15 @@ public class MyArrayList
 		return false;
 	}
 
-	public int indexOf(String key) // returns  index of  first occurrence of key, or -1 if not found.
+	public int indexOf(String key) throws Exception// returns  index of  first occurrence of key, or -1 if not found.
 	{
+		for(int i=0;i<this.size();i++) // loop thru your own array doing .equals test against key
+		{
+			if(this.get(i).equals(key))
+			{
+				return i;
+			}
+		}
 		// same as above but return the index wehre matched or -1
 		return -1;
 	}
