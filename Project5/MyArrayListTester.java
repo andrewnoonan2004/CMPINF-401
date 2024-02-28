@@ -14,7 +14,7 @@ public class MyArrayListTester
 		list1.sortMe();
 		System.out.println( "set1.txt: " + list1 );
 
-/*   LEAVE THIS BLOCK COMMENTED OUT UNTIL YOUR add METHOD IS WRITTEN, COMPIlES AND CORRECTLY OUTPUTS
+ // LEAVE THIS BLOCK COMMENTED OUT UNTIL YOUR add METHOD IS WRITTEN, COMPIlES AND CORRECTLY OUTPUTS
 
 		MyArrayList copyOfList1 = new MyArrayList( list1 ); // Copy C'Tor deep copies contents of list 1 into the copyList
 		System.out.println( "copy1:    " + list1 );
@@ -33,7 +33,7 @@ public class MyArrayListTester
 		MyArrayList union = list1.union(list2);
 		union.sortMe();
 		System.out.println( "union(list1,list2):        " + union );
-
+/* 
 		MyArrayList intersection = list1.intersection(list2);
 		intersection.sortMe();
 		System.out.println( "intersection(list1,list2): " + intersection );

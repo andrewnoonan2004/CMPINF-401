@@ -13,17 +13,25 @@ public class MyArrayList
 	}
 	public MyArrayList( MyArrayList other ) throws Exception // dimension theArray to be this initial capacity
 	{
-		// initalise to same default intial capacity and clear the count
-		// copy all the inialized elems from other array into this array
+		theArray = new String[INITIAL_CAPACITY];
+		count = 0;// initalise to same default intial capacity and clear the count
+		for(int i =0; i<other.size(); i++)
+		{
+			this.add(other.get(i));
+		}// copy all the inialized elems from other array into this array
 		// use other.size(), this.add() and other.get(i)
 
 	}
 	public boolean add(String key) throws Exception // appends specified element to the end of this list. BUT, if is a dupe, reject and return false
 	{
-		// test to see if key already contained in this array. 
-		// if so return false immed
-		// test for need to upSize ? if so do it
-		// tack incoming key onto end of your array, incr count++
+		for(int i=0; i < count; i++)
+		{
+			if(theArray[i] != null && theArray[i].equals(key))// test to see if key already contained in this array. 		
+				return false;// if so return false immed
+		}
+		if(theArray.length == count)// test for need to upSize ? if so do it
+		upSizeArr();
+		theArray[count++] = key;// tack incoming key onto end of your array, incr count++
 
 		return true;
 	}
@@ -39,7 +47,13 @@ public class MyArrayList
 	}
 	public boolean contains( String key) throws Exception
 	{
-		// loop thru your own array doing .equals test against key
+		for(int i=0;i<this.size();i++) // loop thru your own array doing .equals test against key
+		{
+			if(this.get(i).equals(key))
+			{
+				return true;
+			}
+		}
 		// use .size() and use .get(i)
 		return false;
 	}
@@ -54,7 +68,12 @@ public class MyArrayList
 		// BASE/EDGE CASES
 		if (index < 0 || index >= size() ) throw new Exception( "indexOf("+index+") OUT Of BOUNDS!" );
 
-		// copy everything AT and above index, DOWN one slot
+		for(int i = size() -1; i>index;i--)
+		{
+			theArray[i-1] = theArray[i];
+			return true;
+		}
+			// copy everything AT and above index, DOWN one slot
 		return false;
 	}
 	public boolean remove(String key ) throws Exception // removes first occurrence of specified key. True if succeeds else false not found
