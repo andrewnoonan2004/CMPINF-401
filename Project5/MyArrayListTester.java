@@ -33,11 +33,11 @@ public class MyArrayListTester
 		MyArrayList union = list1.union(list2);
 		union.sortMe();
 		System.out.println( "union(list1,list2):        " + union );
-/* 
+ 
 		MyArrayList intersection = list1.intersection(list2);
 		intersection.sortMe();
 		System.out.println( "intersection(list1,list2): " + intersection );
-
+/*
 		MyArrayList difference = list1.difference(list2);
 		difference.sortMe();
 		System.out.println( "difference(list1,list2):   " + difference );

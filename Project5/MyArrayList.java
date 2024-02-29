@@ -75,7 +75,7 @@ public class MyArrayList
 		// BASE/EDGE CASES
 		if (index < 0 || index >= size() ) throw new Exception( "indexOf("+index+") OUT Of BOUNDS!" );
 
-		for(int i = size() -1; i>index;i--)
+		for(int i = size() -1; i>index;i--) //loop through starting at index
 		{
 			theArray[i-1] = theArray[i];
 			return true;
@@ -85,30 +85,51 @@ public class MyArrayList
 	}
 	public boolean remove(String key ) throws Exception // removes first occurrence of specified key. True if succeeds else false not found
 	{
-		// find index where this key is. if not found ret false else copy everything AT and above index, DOWN one slot
+		for(int i=this.size(); i>0;i--)// find index where this key is. if not found ret false else copy everything AT and above index, DOWN one slot
+    {
+      int index = this.indexOf(key);
+      this.remove(index);
+    } 
 		return false;
 	}
 	public boolean addAll( MyArrayList other ) throws Exception // add all elems of other list into this list (BUT no dupes allowed)
 	{
 		// append all of the stuff in incomoint/other array onto the end of yours
+    boolean hasAdded;
+    for(int i=0; i<other.size();i++)
+    {
+      if(this.add(other.get(i)))
+        hasAdded = true;
+    }
 		// if other list empty OR all were dupes then you cant add anything
 		//thus return false in this case
 		// ret true only if you added at least 1 elem
-		return false;
+    hasAdded = false;
+		return hasAdded;
 	}
 
 	public boolean retainAll( MyArrayList other ) throws Exception // only keep elems in this list that are contained in other list
 	{
 		// only keep elems in this list that are contained in other list
+    //loop through this array
+    //if(!other.contains(get(i)))
+    //
 		// only return true if your list was modified
 		return false;
 
 	}
 	public boolean removeAll( MyArrayList other ) throws Exception // remove from this list all elements contained in other list
 	{
-		// remove from this list all elements contained in other list
+		boolean hasRemoved;
+    for(int i =0; i<this.size();i++)
+    {
+      if(this.remove(other.get(i)))
+        hasRemoved = true;
+    }
+    // remove from this list all elements contained in other list
 		// only return true of you actually removed at least one elem
-		return false;
+		hasRemoved = false;
+    return hasRemoved;
 	}
 	public String toString() // print all the elem in array on same line with 1 space between then a newline  i.e a printArray like function
 	{
@@ -136,11 +157,15 @@ public class MyArrayList
 	}
 	public MyArrayList intersection( MyArrayList other ) throws Exception
 	{
-		return null; // ONLY 3 LINES OF CODE NEEDED!
+		MyArrayList interResult = new MyArrayList(this);
+		interResult.removeAll( other);
+		return interResult; //
 	}
 	public MyArrayList difference( MyArrayList other ) throws Exception
 	{
-		return null; // ONLY 3 LINES OF CODE NEEDED!
+		MyArrayList diffResult = new MyArrayList(this);
+		diffResult.retainAll(other)
+		return diffResult;// ONLY 3 LINES OF CODE NEEDED!
 	}
 	public MyArrayList xor( MyArrayList other ) throws Exception
 	{

@@ -44,7 +44,7 @@ public class ComparableFraction implements Comparable<ComparableFraction>
 	public int compareTo( ComparableFraction other )
 	{
 		ComparableFraction diff = this.subtract( other ); // <-- DO THIS!!!
-
+    // is the subtract function above, compare the numerator and denominator
 		// DONT LOOK AT THIS OR OTHER FRACTION ANY MORE
 		// JUST EMAININE DIFF's numer & denom
 
