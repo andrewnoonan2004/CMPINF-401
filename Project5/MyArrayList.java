@@ -72,24 +72,26 @@ public class MyArrayList
 	}
 	public boolean remove(int index ) throws Exception // removes 1st occurrence of key. True if succeeds else false
 	{
-		// BASE/EDGE CASES
-		if (index < 0 || index >= size() ) throw new Exception( "indexOf("+index+") OUT Of BOUNDS!" );
-
-		for(int i = size() -1; i>index;i--) //loop through starting at index
+		if(index < 0 || index > size()-1)
+			return false;
+		for(int i = index; i < size()-1; i++)
 		{
-			theArray[i-1] = theArray[i];
-			return true;
+			theArray[i] = theArray[i+1];
 		}
-			// copy everything AT and above index, DOWN one slot
-		return false;
+		count--;
+		return true;
 	}
 	public boolean remove(String key ) throws Exception // removes first occurrence of specified key. True if succeeds else false not found
 	{
-		for(int i=this.size(); i>0;i--)// find index where this key is. if not found ret false else copy everything AT and above index, DOWN one slot
-    {
-      int index = this.indexOf(key);
-      this.remove(index);
-    } 
+		for(int i=0;i<this.size();i++) // loop thru your own array doing .equals test against key
+		{
+			if(this.get(i).equals(key))
+			{
+				this.remove(i);
+				return true;
+			}
+		}
+		// same as above but return true if you removed it or false if not found
 		return false;
 	}
 	public boolean addAll( MyArrayList other ) throws Exception // add all elems of other list into this list (BUT no dupes allowed)
@@ -110,12 +112,17 @@ public class MyArrayList
 
 	public boolean retainAll( MyArrayList other ) throws Exception // only keep elems in this list that are contained in other list
 	{
-		// only keep elems in this list that are contained in other list
-    //loop through this array
-    //if(!other.contains(get(i)))
-    //
-		// only return true if your list was modified
-		return false;
+		boolean hasRetained;
+	for(int i =0; i<this.size();i++)
+	{
+	  if(other.contains(this.get(i)))
+		this.remove(i);
+		hasRetained = true;
+	}
+		hasRetained = false;
+	// only keep elems in this list that are contained in other list
+		// only return true of you actually removed at least one elem
+	return hasRetained;
 
 	}
 	public boolean removeAll( MyArrayList other ) throws Exception // remove from this list all elements contained in other list
@@ -158,13 +165,13 @@ public class MyArrayList
 	public MyArrayList intersection( MyArrayList other ) throws Exception
 	{
 		MyArrayList interResult = new MyArrayList(this);
-		interResult.removeAll( other);
+		interResult.retainAll( other);
 		return interResult; //
 	}
 	public MyArrayList difference( MyArrayList other ) throws Exception
 	{
 		MyArrayList diffResult = new MyArrayList(this);
-		diffResult.retainAll(other)
+		diffResult.removeAll(other);
 		return diffResult;// ONLY 3 LINES OF CODE NEEDED!
 	}
 	public MyArrayList xor( MyArrayList other ) throws Exception

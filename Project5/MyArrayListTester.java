@@ -37,15 +37,15 @@ public class MyArrayListTester
 		MyArrayList intersection = list1.intersection(list2);
 		intersection.sortMe();
 		System.out.println( "intersection(list1,list2): " + intersection );
-/*
-		MyArrayList difference = list1.difference(list2);
-		difference.sortMe();
-		System.out.println( "difference(list1,list2):   " + difference );
 
-		MyArrayList xor = list1.xor(list2);
-		xor.sortMe();
-		System.out.println( "xor(list1,list2):          " + xor );
-*/
+		//MyArrayList difference = list1.difference(list2);
+		//difference.sortMe();
+		//System.out.println( "difference(list1,list2):   " + difference );
+
+//		MyArrayList xor = list1.xor(list2);
+//		xor.sortMe();
+//		System.out.println( "xor(list1,list2):          " + xor );
+
 
 	} // END main
 } // END CLASS MyArrayListTester
