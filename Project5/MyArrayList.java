@@ -115,7 +115,7 @@ public class MyArrayList
 		boolean hasRetained;
 	for(int i =0; i<this.size();i++)
 	{
-	  if(other.contains(this.get(i)))
+	  if(!other.contains(this.get(i)))
 		this.remove(i);
 		hasRetained = true;
 	}
