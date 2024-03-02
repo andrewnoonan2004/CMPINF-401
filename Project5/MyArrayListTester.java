@@ -38,13 +38,13 @@ public class MyArrayListTester
 		intersection.sortMe();
 		System.out.println( "intersection(list1,list2): " + intersection );
 
-		//MyArrayList difference = list1.difference(list2);
-		//difference.sortMe();
-		//System.out.println( "difference(list1,list2):   " + difference );
+		MyArrayList difference = list1.difference(list2);
+		difference.sortMe();
+		System.out.println( "difference(list1,list2):   " + difference );
 
-//		MyArrayList xor = list1.xor(list2);
-//		xor.sortMe();
-//		System.out.println( "xor(list1,list2):          " + xor );
+		MyArrayList xor = list1.xor(list2);
+		xor.sortMe();
+		System.out.println( "xor(list1,list2):          " + xor );
 
 
 	} // END main
