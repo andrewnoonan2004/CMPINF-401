@@ -1,8 +1,9 @@
+
 public class MyString
 {
 	private char[] letters;
-	
-/* 	NEXT 3 METHODS GIVEN AS IS DO NOT MODIFY
+	static final int NOT_FOUND=1;
+// 	NEXT 3 METHODS GIVEN AS IS DO NOT MODIFY
 
 	public MyString( String other )
 	{
@@ -19,17 +20,17 @@ public class MyString
 		return new String(letters);
 	}
 
-        END OF GIVEN METHODS.  YOU WRITE (FILL IN)  ALL THOSE BELOW
-*/	
+     //   END OF GIVEN METHODS.  YOU WRITE (FILL IN)  ALL THOSE BELOW
+	
 
 	public int length()
 	{
-		return 0;  // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE
+		return letters.length;  // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE
 	}
 
 	public char charAt(int index)
 	{
-		if(index<0 || index>letters.length())
+		if(index<0 || index>letters.length)
 		{
 			System.out.println("The index: " + index + "is invalid!");
 			System.exit(0);
@@ -39,6 +40,7 @@ public class MyString
 			return letters[index];
 		}
 		 // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE
+		return 0;
 	}
 	int compareTo(MyString other)
 	{
@@ -58,18 +60,26 @@ public class MyString
 	}	
 	public boolean equals(MyString other)
 	{
-		return false;  // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
+		if(this.compareTo(other) == 0) return true;
+		else return false;
 
 	}
 	// LOOKING for c but starting at [startIndex],  not at [0]
 	// You should use this in your other Indexof Method
 	public int indexOf(int startIndex, char ch)	
 	{
-		return -1; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
+		for(int i=startIndex; i< letters.length;i++)
+		{
+			if(letters[i] == ch)
+			return i;
+		} 
+		return NOT_FOUND;// JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
  
 	}
 	public int indexOf(MyString other)
-	{	// RE-USE the indexOf( int startIndex, char ch) method above in here
+	{	
+		int indexOfFirst = indexOf(0, other.charAt(0));
+		if(// RE-USE the indexOf( int startIndex, char ch) method above in here
 		return -1; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
 		
 	}
