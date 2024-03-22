@@ -2,7 +2,7 @@
 public class MyString
 {
 	private char[] letters;
-	static final int NOT_FOUND=1;
+	static final int NOT_FOUND=-1;
 // 	NEXT 3 METHODS GIVEN AS IS DO NOT MODIFY
 
 	public MyString( String other )
@@ -35,29 +35,43 @@ public class MyString
 			System.out.println("The index: " + index + "is invalid!");
 			System.exit(0);
 		}
-		else
-		{
-			return letters[index];
-		}
+		return letters[index];
 		 // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE
-		return 0;
 	}
 	int compareTo(MyString other)
 	{
-		return 0; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
-		//ms1 h e  l l  o
-		//-
-		//ms2 h e  l i  c  o   p  t   e  r
-		//----------
-		//    0  0 0 -2 12 0
-		//if (ms1.compareTo(ms2) == 0)
-		//identical letter for letter and case by case and length
-		// else if (ms1.compareTo(ms2)> 0)
-		//ms1 is lexically greater than ms2
-		//else
-		//ms1 is lexically less than ms2
-
-	}	
+		int compLength;
+		if(letters.length > other.length())
+		{
+			compLength = other.length();
+		}
+		else
+		{
+			compLength = letters.length;
+		}
+		for(int i = 0; i < compLength; i++)
+		{
+			if(letters[i] > other.charAt(i))
+			{
+				return 1;
+			}
+			else if(letters[i] < other.charAt(i))
+			{
+				return -1;
+			}
+		}
+		
+		if(letters.length > other.length())
+		{
+			return 1;
+		}
+		else if(letters.length < other.length())
+		{
+			return -1;
+		}
+		
+		return 0;
+	}
 	public boolean equals(MyString other)
 	{
 		if(this.compareTo(other) == 0) return true;
@@ -79,9 +93,28 @@ public class MyString
 	public int indexOf(MyString other)
 	{	
 		int indexOfFirst = indexOf(0, other.charAt(0));
-		if(// RE-USE the indexOf( int startIndex, char ch) method above in here
-		return -1; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
-		
+		if(indexOfFirst == NOT_FOUND) return NOT_FOUND;
+		while(indexOfFirst != NOT_FOUND)
+		{
+			if(indexOfSubString(indexOfFirst, other) != NOT_FOUND)
+			{
+				return indexOfFirst;
+			}
+			else indexOfFirst = indexOf(indexOfFirst + 1, other.charAt(0));
+		}
+	return -1;// RE-USE the indexOf( int startIndex, char ch) method above in here
+	// JUST TO MAKE IT COMPILE. YOU REPLACE WITH ALL YOUR CODE 
+		}
+	private int indexOfSubString(int startIndex, MyString other)
+	{
+		for(int i = 0; i < other.length(); i++)
+		{
+			if(letters[startIndex + i] != other.charAt(i))
+			{
+				return NOT_FOUND;
+			}
+		}
+		return startIndex;
 	}
 } // END MYSTRING CLASS
 // this: "the quick brown fox jumped over the lazy dog"
