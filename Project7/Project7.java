@@ -90,12 +90,18 @@ public class Project7
 	}
 	// return true only if the array is sorted 
 	static boolean isSorted(int array[], int i, int count ) 
-	{	return false;
+	{	
+		if(array[i]> array[i+1]) return false;
+		if(i == count -2 ) return true;
+		return(isSorted(array,i+1,count));
 	}
 
 	// return true if string is palindrome
 	static boolean isPalindrome(String s, int lo, int hi ) 
-	{	return false;
+	{	
+		if(lo>=hi) return true;
+		if(s.charAt(lo) != s.charAt(hi)) return false;
+		return(isPalindrome(s, lo+1, hi-1));
 	}
 } // END CLASS Project7
 	
