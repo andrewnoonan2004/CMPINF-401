@@ -19,15 +19,15 @@ public class Project7
 		// do you see the pattern?  code it up recursively!
 		
 		
-	//	int rows = 5;
-	//	System.out.format("%d row triangle tree contains %d stars\n", rows, triStars(rows) );
+		int rows = 5;
+		System.out.format("%d row triangle tree contains %d stars\n", rows, triStars(rows) );
 		
 		// S U M D I G I T S
 		int number = 12345;
 		System.out.format("sum of digits in %d = %d\n", number, sumDigits( number ) );
 		
 		// C O U N T 7 S
-	/* number = 713274772;
+		number = 713274772;
 		System.out.format("%d occurances of digit 7 in %d\n", count7s(number), number );
 		
 		// C O U N T 8 S -but- there is a twist! Any 8 with an 8 to its left counts as TWO 8s
@@ -58,21 +58,20 @@ public class Project7
 			System.out.format("%s IS a palindrome\n", s );	
 		else
 			System.out.format("\n%s NOT a palindrome\n", s ); 	
-	*/	
+		
 	} // END MAIN
 
 	// count stars in a triangle using # of rows as input
 	static int triStars(int rows)  
-	{	return 0; 
+	{	
+		if(rows == 0) return rows;
+		return(rows + triStars(rows-1));
 	}
 	// given a number return the sum of the digits
 	static int sumDigits(int n) 
-	{	
-		int sum=0;
-		if(n == 0) return sum;
-		 sum += n%10;
-		 return(sumDigits(n/10));
-		
+	{
+		if(n == 0) return n;
+		return((n%10) + sumDigits(n/10));	
 	}
 	// given a number compute the number of 7's in that number 
 	static int count7s(int n) 
@@ -85,7 +84,9 @@ public class Project7
 	}
 	//compute base to the power n
 	static int powerN(int base, int n) 
-	{	return 0;
+	{	
+		if(n == 0) return 1;
+		return(base * powerN(base, n-1));
 	}
 	// return true only if the array is sorted 
 	static boolean isSorted(int array[], int i, int count ) 
