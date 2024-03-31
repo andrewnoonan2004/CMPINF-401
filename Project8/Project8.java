@@ -14,7 +14,7 @@ public class Project8
             {
                 System.out.print("Enter int in range 1..100 inclusive:");
                 num = kbd.nextInt();
-                if(num <1 || num > 100) throw new Exception( "Number: " + num + " out of range." + " Must be in 1..100");
+                if(num <1 || num > 100) throw new NumberOutOfRangeException();
                 System.out.format("Thank you. You entered %d\n", num);
                 done = true;
             }
@@ -23,15 +23,27 @@ public class Project8
                 System.out.println("Input was not an integer");
                 kbd.nextLine();
             }
+            catch( NumberOutOfRangeException e)
+            {
+                System.out.println(e.getMessage());
+            }
             catch(Exception e)
             {
-                String msg = "" + e;
-                msg = msg.replaceFirst("java.lang.Exception: ","");
-                System.out.println(msg);
-                kbd.nextLine();
+                System.out.println(e);
+                System.exit(0);
+                
             }
         }
         // MODIFY, REPLACE, ADD LOOP CODE, ADD TRY CATCH BLOCK(S) AS NEEDED BELOW
 
-    }//END main
+    }
+    private static class NumberOutOfRangeException extends Exception
+    {
+        private NumberOutOfRangeException()
+        {
+            super("Number out of range. Must be be in 1..100");
+        }
+        
+    }
+    //END main
 } //END CLSS
